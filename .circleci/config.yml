@@ -6,7 +6,6 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm install 
       - run:
           name: "build"
           command: npm run lint
@@ -15,9 +14,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
-      - run: npm install
       - run:
-          name: "build"
+          name: "test"
           command: npm run test
   analyze:
     docker:
@@ -25,7 +23,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: "build"
+          name: "analyze"
           command: npm audit
 workflows:
   simple-ci-workflow:
